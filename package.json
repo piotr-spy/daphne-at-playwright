@@ -1,0 +1,22 @@
+{
+  "name": "daphne-at-playwright",
+  "version": "1.0.0",
+  "description": "Playwright learning project",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piotr-spy/daphne-at-playwright.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piotr-spy/daphne-at-playwright/issues"
+  },
+  "homepage": "https://github.com/piotr-spy/daphne-at-playwright#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.13.14"
+  }
+}
