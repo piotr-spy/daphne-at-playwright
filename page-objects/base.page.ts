@@ -15,7 +15,7 @@ export class BasePage {
         return await this.page.title()
     }
     
-    public async open(url: string): Promise<void> {
+    public async open(): Promise<void> {
         await this.page.goto(``);
     }
 }
