@@ -1,6 +1,6 @@
 import test, { expect } from "@playwright/test";
-import { NavigationPage } from "../page-objects/navigation.page";
-import { HomePage } from "../page-objects/front.home.page";
+import { NavigationPage } from "../../page-objects/navigation.page";
+import { HomePage } from "../../page-objects/front.home.page";
 
 test.describe(`Home page tests`, () => {
     
