@@ -8,7 +8,7 @@ echo "
         =                                             =
         ===============================================
         "
-npx playwright test
+npm run playwright
 
 # Show HTML report
 # npx playwright show-report

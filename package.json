@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Playwright learning project",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "playwright": "playwright test"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/piotr-spy/daphne-at-playwright.git"
