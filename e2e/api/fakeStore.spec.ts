@@ -1,8 +1,10 @@
 import { expect, test } from '@playwright/test';
-import { newProduct } from '../../test-data/products';
+import { newProduct, updatedProduct } from '../../test-data/products';
+import { stringify } from 'querystring';
 
 const products = {
-    new: newProduct
+    new: newProduct,
+    updated: updatedProduct
 }
 
 test.describe('Fake Store API Tests', () => {
@@ -10,7 +12,6 @@ test.describe('Fake Store API Tests', () => {
     test('Get all products and validate response', async ({ request }) => {
         const response = await request.get('https://fakestoreapi.com/products')
         const products = await response.json()
-        await expect(response).toBeOK()
         expect(response.status()).toBe(200)
         products.forEach(product => {
             expect(product).toHaveProperty('id')
@@ -34,10 +35,18 @@ test.describe('Fake Store API Tests', () => {
         })
         const product = await response.json()
         const { id, ...responseProductWithoutID } = product
-        await expect(response).toBeOK()
         expect(response.status()).toBe(200)
         expect(product).toHaveProperty('id')
         expect(product.id).toBeGreaterThan(0)
         expect(responseProductWithoutID).toEqual(products.new)
+    })
+
+    test('Update a product and validate response @putTest', async ({ request }) => {
+        const putResponse = await request.put('https://fakestoreapi.com/products/8', {
+            data: products.updated
+        })
+        const updatedProduct = await putResponse.json()
+        expect(putResponse.status()).toBe(200)
+        expect(updatedProduct).toEqual(products.updated)
     })
 })
