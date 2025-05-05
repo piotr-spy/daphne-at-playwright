@@ -1,10 +1,10 @@
 import { expect, test } from '@playwright/test';
-import { newProduct, updatedProduct } from '../../test-data/products';
-import { stringify } from 'querystring';
+import { deletedProduct, newProduct, updatedProduct } from '../../test-data/products';
 
 const products = {
     new: newProduct,
-    updated: updatedProduct
+    updated: updatedProduct,
+    deleted: deletedProduct
 }
 
 test.describe('Fake Store API Tests', () => {
@@ -61,5 +61,12 @@ test.describe('Fake Store API Tests', () => {
         const updatedProduct = await patchResponse.json()
         expect(patchResponse.status()).toBe(200)
         expect(updatedProduct).toEqual(expectedPatchResponse)
+    })
+
+    test ('Delete a product and validate response @deleteTest', async ({ request }) => {
+        const deleteResponse = await request.delete('https://fakestoreapi.com/products/9')
+        const deletedProduct = await deleteResponse.json()
+        expect(deleteResponse.status()).toBe(200)
+        expect(deletedProduct).toEqual(products.deleted)
     })
 })
