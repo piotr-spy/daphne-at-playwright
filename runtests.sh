@@ -10,9 +10,6 @@ echo "
         "
 npx playwright test
 
-# Show HTML report
-# npx playwright show-report
-
 echo "
         ===============================================
         =                                             =
@@ -20,3 +17,6 @@ echo "
         =                                             =
         ===============================================
         "
+
+# Show HTML report
+# npx playwright show-report
