@@ -49,4 +49,17 @@ test.describe('Fake Store API Tests', () => {
         expect(putResponse.status()).toBe(200)
         expect(updatedProduct).toEqual(products.updated)
     })
+
+    test('Update product property and validate response @patchTest', async ({ request }) => {
+        const { id, price } = products.updated
+        const expectedPatchResponse = { id, price }
+        const patchResponse = await request.patch('https://fakestoreapi.com/products/8', {
+            data: {
+                price: products.updated.price
+            }
+        })
+        const updatedProduct = await patchResponse.json()
+        expect(patchResponse.status()).toBe(200)
+        expect(updatedProduct).toEqual(expectedPatchResponse)
+    })
 })
