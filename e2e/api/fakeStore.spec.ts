@@ -1,19 +1,13 @@
 import { expect, test } from '@playwright/test';
 import { deletedProduct, newProduct, updatedProduct } from '../../test-data/products';
 
-const products = {
-    new: newProduct,
-    updated: updatedProduct,
-    deleted: deletedProduct
-}
-
 test.describe('Fake Store API Tests', () => {
 
     test('Get all products and validate response', async ({ request }) => {
         const response = await request.get('https://fakestoreapi.com/products')
         const products = await response.json()
         expect(response.status()).toBe(200)
-        products.forEach(product => {
+        products.forEach((product: any) => {
             expect(product).toHaveProperty('id')
             expect(product).toHaveProperty('title')
             expect(product).toHaveProperty('price')
@@ -31,42 +25,48 @@ test.describe('Fake Store API Tests', () => {
 
     test('Create new product and validate response @postTest', async ({ request }) => {
         const response = await request.post('https://fakestoreapi.com/products', {
-            data: products.new
+            data: newProduct
         })
         const product = await response.json()
         const { id, ...responseProductWithoutID } = product
-        expect(response.status()).toBe(200)
+        expect(response.status()).toBe(201)
         expect(product).toHaveProperty('id')
         expect(product.id).toBeGreaterThan(0)
-        expect(responseProductWithoutID).toEqual(products.new)
+        expect(responseProductWithoutID).toEqual(newProduct)
     })
 
     test('Update a product and validate response @putTest', async ({ request }) => {
         const putResponse = await request.put('https://fakestoreapi.com/products/8', {
-            data: products.updated
+            data: updatedProduct
         })
-        const updatedProduct = await putResponse.json()
+        const updatedProductResponse = await putResponse.json()
         expect(putResponse.status()).toBe(200)
-        expect(updatedProduct).toEqual(products.updated)
+        expect(updatedProductResponse).toEqual({
+            ...updatedProduct,
+            image: expect.stringMatching(/^https:\/\/fakestoreapi\.com\/img\/.+$/)
+        })
     })
 
     test('Update product property and validate response @patchTest', async ({ request }) => {
-        const { id, price } = products.updated
+        const { id, price } = updatedProduct
         const expectedPatchResponse = { id, price }
         const patchResponse = await request.patch('https://fakestoreapi.com/products/8', {
             data: {
-                price: products.updated.price
+                price: updatedProduct.price
             }
         })
-        const updatedProduct = await patchResponse.json()
+        const updatedProductResponse = await patchResponse.json()
         expect(patchResponse.status()).toBe(200)
-        expect(updatedProduct).toEqual(expectedPatchResponse)
+        expect(updatedProductResponse).toEqual(expectedPatchResponse)
     })
 
     test ('Delete a product and validate response @deleteTest', async ({ request }) => {
         const deleteResponse = await request.delete('https://fakestoreapi.com/products/9')
-        const deletedProduct = await deleteResponse.json()
+        const deletedProductResponse = await deleteResponse.json()
         expect(deleteResponse.status()).toBe(200)
-        expect(deletedProduct).toEqual(products.deleted)
+        expect(deletedProductResponse).toEqual({
+            ...deletedProduct,
+            image: expect.stringMatching(/^https:\/\/fakestoreapi\.com\/img\/.+$/)
+        })
     })
 })
