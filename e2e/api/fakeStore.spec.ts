@@ -42,7 +42,7 @@ test.describe('Fake Store API Tests', () => {
         const updatedProductResponse = await putResponse.json()
         expect(putResponse.status()).toBe(200)
         expect(updatedProductResponse).toEqual({
-            ...updatedProductResponse,
+            ...updatedProduct,
             image: expect.stringMatching(/^https:\/\/fakestoreapi\.com\/img\/.+$/)
         })
     })
@@ -65,7 +65,7 @@ test.describe('Fake Store API Tests', () => {
         const deletedProductResponse = await deleteResponse.json()
         expect(deleteResponse.status()).toBe(200)
         expect(deletedProductResponse).toEqual({
-            ...deletedProductResponse,
+            ...deletedProduct,
             image: expect.stringMatching(/^https:\/\/fakestoreapi\.com\/img\/.+$/)
         })
     })
