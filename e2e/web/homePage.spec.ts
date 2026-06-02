@@ -1,4 +1,4 @@
-import { test, expect } from "../../utils/fixtures";
+import { test, expect } from "../../fixtures/page.objects";
 
 test.describe(`Home page tests`, () => {
 
