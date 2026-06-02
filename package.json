@@ -16,8 +16,8 @@
   },
   "homepage": "https://github.com/piotr-spy/daphne-at-playwright#readme",
   "devDependencies": {
+    "@cucumber/cucumber": "^13.0.0",
     "@playwright/test": "^1.51.1",
-    "@types/node": "^22.13.14",
-    "@cucumber/cucumber": "^11.2.0"
+    "@types/node": "^22.19.19"
   }
 }
