@@ -8,7 +8,6 @@ export class HomePage extends BasePage {
 
     constructor(page: Page) {
         super(page)
-        this.page = page
     }
 
     /**
@@ -22,24 +21,21 @@ export class HomePage extends BasePage {
      * Page Elements
      */
     public get topMessage() {
-        return this.page.locator(`div.message.global.demo`)
+        return this.page.locator(`div.testing-notification-bar`)
     }
     public get searchInput() {
-        return this.page.locator(`#search`)
+        return this.page.locator(`#search-query`)
     }
     public get headerMenu() {
-        return this.page.locator(`nav.navigation`)
+        return this.page.locator(`nav.navbar.navbar-expand-lg`)
     }
     public get pageTitle() {
-        return this.page.locator(`h1.page-title`)
+        return this.page.locator(`a.navbar-brand`)
     }
     public get pageContent() {
-        return this.page.locator(`div.columns`)
+        return this.page.locator(`div.container app-overview`)
     }
     public get footer() {
-        return this.page.locator(`footer.page-footer`)
-    }
-    public get copyRightSection() {
-        return this.page.locator(`small.copyright`)
+        return this.page.locator(`app-footer`)
     }
 }

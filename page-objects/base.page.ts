@@ -5,7 +5,7 @@ import { Page } from "@playwright/test";
  * shared across all page objects
  */
 export class BasePage {
-    protected page: Page;
+    protected readonly page: Page;
 
     constructor(page: Page) {
         this.page = page
@@ -16,6 +16,6 @@ export class BasePage {
     }
     
     public async open(): Promise<void> {
-        await this.page.goto(``);
+        await this.page.goto(``)
     }
 }
