@@ -8,7 +8,6 @@ This project is a starter framework for various E2E test types, using default [P
 
 ## Requirements
 - https://nodejs.org/en - Node 22.14.0 or higher LTS
-- https://www.oracle.com/java/technologies/downloads/ - JDK 21 or higher LTS required for Allure
 
 ## Installation
 - Clone the repository

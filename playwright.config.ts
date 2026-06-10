@@ -44,7 +44,7 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'Desktop_Chrome',
+      name: 'Desktop-Chrome',
       use: { ...devices['Desktop Chrome'] },
     },
 
@@ -54,17 +54,17 @@ export default defineConfig({
     // },
 
     {
-      name: 'Desktop_Safari',
+      name: 'Desktop-Safari',
       use: { ...devices['Desktop Safari'] },
     },
 
     /* Test against mobile viewports. */
     {
-      name: 'Mobile_Chrome',
+      name: 'Mobile-Chrome',
       use: { ...devices['Pixel 5'] },
     },
     {
-      name: 'Mobile_Safari',
+      name: 'Mobile-Safari',
       use: { ...devices['iPhone 12'] },
     },
 
