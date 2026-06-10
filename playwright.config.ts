@@ -32,6 +32,9 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
 
+  // Snapshots configuration
+  snapshotPathTemplate: `./snapshots/{projectName}/{arg}{ext}`,
+
   /* Configure projects for major browsers */
   projects: [
     {
