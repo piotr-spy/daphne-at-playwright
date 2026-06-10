@@ -1,6 +1,6 @@
 import { test, expect } from "../../fixtures/page.objects";
 
-test.describe(`Home page tests`, () => {
+test.describe(`Home page tests`, { tag: `@homePageTests` }, () => {
 
     test.beforeEach(async ({ homePage }) => {
         await homePage.open()
