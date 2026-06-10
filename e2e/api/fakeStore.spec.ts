@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { deletedProduct, newProduct, updatedProduct } from '../../test-data/products';
 
-test.describe('Fake Store API Tests', () => {
+test.describe('Fake Store API Tests', { tag: `@apiTests` }, () => {
 
     test('Get all products and validate response', async ({ request }) => {
         const response = await request.get('https://fakestoreapi.com/products')

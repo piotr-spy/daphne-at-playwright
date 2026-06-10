@@ -5,12 +5,22 @@ import { Page } from "@playwright/test";
  * shared across all page objects
  */
 export class BasePage {
-    protected readonly page: Page;
+    protected readonly page: Page
 
     constructor(page: Page) {
         this.page = page
     }
 
+    /**
+     * Common selectors
+     */
+    public get pageBody() {
+        return this.page.locator(`body`)
+    }
+
+    /**
+     * Common methods
+     */
     public async getTitle(): Promise<string> {
         return await this.page.title()
     }
