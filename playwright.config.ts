@@ -32,10 +32,19 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
 
+  /* Snapshot configuration */
+  snapshotPathTemplate: `./snapshots/{projectName}/{arg}{ext}`,
+
+  /* Assertion configuration */
+  expect: {
+    timeout: 10000,
+    toHaveScreenshot: { maxDiffPixelRatio: 0.05 }
+  },
+
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'Desktop - Chrome',
+      name: 'Desktop-Chrome',
       use: { ...devices['Desktop Chrome'] },
     },
 
@@ -45,17 +54,17 @@ export default defineConfig({
     // },
 
     {
-      name: 'Desktop - Safari',
+      name: 'Desktop-Safari',
       use: { ...devices['Desktop Safari'] },
     },
 
     /* Test against mobile viewports. */
     {
-      name: 'Mobile - Chrome',
+      name: 'Mobile-Chrome',
       use: { ...devices['Pixel 5'] },
     },
     {
-      name: 'Mobile - Safari',
+      name: 'Mobile-Safari',
       use: { ...devices['iPhone 12'] },
     },
 

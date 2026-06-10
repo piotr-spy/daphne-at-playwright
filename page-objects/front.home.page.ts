@@ -14,7 +14,7 @@ export class HomePage extends BasePage {
      * Overwrite specific options for the Home Page
      */
     public async open() {
-        await this.page.goto('')
+        await this.page.goto(``)
     }
 
     /**
@@ -34,6 +34,9 @@ export class HomePage extends BasePage {
     }
     public get pageContent() {
         return this.page.locator(`div.container app-overview`)
+    }
+    public get productCards() {
+        return this.page.locator(`a.card`)
     }
     public get footer() {
         return this.page.locator(`app-footer`)

@@ -1,9 +1,9 @@
 import { test, expect } from "../../fixtures/page.objects";
 
-test.describe(`Home page tests`, () => {
+test.describe(`Home page tests`, { tag: `@homePageTests` }, () => {
 
-    test.beforeEach(async ({ navigationPage }) => {
-        await navigationPage.navigateTo(`home`)
+    test.beforeEach(async ({ homePage }) => {
+        await homePage.open()
     })
 
     test(`Layout basic check`, async ({ homePage }) => {
