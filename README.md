@@ -3,7 +3,8 @@ This project is a starter framework for various E2E test types, using default [P
 
 ## Features
 - Example spec files for both web and API testing
-- Page object model implemantation with fixtures
+- Page object model implementation with fixtures
+- Visual testing for different device and browser combinations
 
 ## Requirements
 - https://nodejs.org/en - Node 22.14.0 or higher LTS
