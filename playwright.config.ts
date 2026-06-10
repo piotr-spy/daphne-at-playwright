@@ -32,8 +32,14 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
 
-  // Snapshots configuration
+  /* Snapshot configuration */
   snapshotPathTemplate: `./snapshots/{projectName}/{arg}{ext}`,
+
+  /* Assertion configuration */
+  expect: {
+    timeout: 10000,
+    toHaveScreenshot: { maxDiffPixelRatio: 0.05 }
+  },
 
   /* Configure projects for major browsers */
   projects: [
